@@ -1,0 +1,26 @@
+version: "2.0"
+services:
+  nginx-docker:
+        image: registry.cn-hangzhou.aliyuncs.com/zhaopeng_linux_nignx_php/my-nginx
+        volumes:
+          - ./nginx/www:/usr/share/nginx/html
+          - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+          - ./nginx/conf/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+        ports:
+          - "8000:80"
+        container_name: nginx-docker
+        depends_on:
+          - php-docker
+        links:
+          - php-docker
+
+  php-docker:
+
+        image: registry.cn-hangzhou.aliyuncs.com/zhaopeng_linux_nignx_php/my-php:v1
+        volumes:
+          - ./nginx/www:/var/www/html
+          - ./php-fpm/conf:/usr/local/etc/php
+          - ./php-fpm/logs:/phplogs
+        ports:
+          - "9002:9000"
+        container_name: php-docker

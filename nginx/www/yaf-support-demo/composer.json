@@ -1,0 +1,21 @@
+{
+    "name": "yaf-support-demo",
+    "autoload": {
+        "files": [
+            "helpers.php"
+        ],
+        "psr-4": {
+            "Yaf\\Library\\": "library/",
+            "Yaf\\Application\\": "application/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://mirrors.aliyun.com/composer/"
+        }
+    ],
+    "require": {
+        "sixiaoqi/yaf-support": "1.0.4"
+    }
+}
